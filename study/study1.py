@@ -1,4 +1,4 @@
-from CoffeeShop import CoffeeShop
+from study.CoffeeShop import CoffeeShop
 
 print("1. String formatting")
 name = 'Chris'
@@ -44,13 +44,13 @@ my_name()
 friends_name()
 
 print("5. Self, static, class methods")
-CoffeeShop.check_weather()
-coffee_shop = CoffeeShop('1')
-coffee_shop_1 = CoffeeShop('2')
+CoffeeShop.CoffeeShop.check_weather()
+coffee_shop = CoffeeShop.CoffeeShop('1')
+coffee_shop_1 = CoffeeShop.CoffeeShop('2')
 
 coffee_shop_1.change_coffee()
 coffee_shop_1.change_specialty('drip coffee')
-coffee_shop_2 = CoffeeShop('3')
+coffee_shop_2 = CoffeeShop.CoffeeShop('3')
 
 print(coffee_shop.make_coffee())
 print(coffee_shop_1.make_coffee())
@@ -268,4 +268,8 @@ for x in 'Hello':
 else:
     print('NO') # если дошли до break то else не печатается, else принадлежит циклу for а не if-y
 
+
+print(list(map(lambda i, j : i + j, [1,2,3], [5,6,7])))
+
+test = 44
 

@@ -1,4 +1,4 @@
-from topics import Car
+from topics.Car import Car
 
 
 class Audi(Car):
