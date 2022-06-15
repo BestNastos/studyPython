@@ -105,4 +105,11 @@ print(type(3))#<class 'int'>
 print(type)#<class 'type'>
 isinstance((1),tuple) #False
 
+print("12) Boxing/unboxing?")
+def handle_info(name, age, gender, friends):
+    print(name, age, gender, friends)
 
+person_info = ("Bob", 27)
+person_additional_info = {"gender": "male", "friends": ("Kate",)}
+
+handle_info(*person_info, **person_additional_info) #Bob 27 male ('Kate',)
