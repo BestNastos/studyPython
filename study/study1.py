@@ -18,11 +18,11 @@ print("2. Is vs ==")
 a = [1, 2, 3]
 b = a
 c = [1, 2, 3]
-print(a == c)
-print(a is c)
-print(id(a))
-print(id(b))
-print(id(c))
+print(a == c) #true
+print(a is c) #false
+print(id(a)) #1649342035584
+print(id(b)) #1649342035584
+print(id(c)) #1649342035328
 
 print("3. Decorator")
 
@@ -38,19 +38,19 @@ def my_name():
 
 @logging
 def friends_name():
- print('naruto')
+ print('anna')
 
 my_name()
 friends_name()
 
 print("5. Self, static, class methods")
-CoffeeShop.CoffeeShop.check_weather()
-coffee_shop = CoffeeShop.CoffeeShop('1')
-coffee_shop_1 = CoffeeShop.CoffeeShop('2')
+CoffeeShop.check_weather()
+coffee_shop = CoffeeShop('1')
+coffee_shop_1 = CoffeeShop('2')
 
 coffee_shop_1.change_coffee()
 coffee_shop_1.change_specialty('drip coffee')
-coffee_shop_2 = CoffeeShop.CoffeeShop('3')
+coffee_shop_2 = CoffeeShop('3')
 
 print(coffee_shop.make_coffee())
 print(coffee_shop_1.make_coffee())
@@ -62,6 +62,7 @@ def add_three(x):
     return x + 3
 li = [1,2,3]
 print(list(map(add_three, li)))
+print(list(map(lambda i, j : i + j, [1,2,3], [5,6,7]))) #[6, 8, 10]
 
 print("7. Reduce function")
 # На каждой итерации в функцию передаются как текущий элемент, так и вЫходные данные предыдущего элемента
@@ -70,6 +71,7 @@ def add_three(x,y):
     return x + y
 li = [0,1,2,3]
 print(reduce(add_three, li))#6
+print(reduce(lambda i,j : i+j, range(7))) # 0 1 2 3 4 5 6 -> 21
 
 print("8. Filter function")
 def add_three(x):
@@ -79,7 +81,8 @@ def add_three(x):
         return False
 
 li = [1,2,3,4,5,6,7,8]
-print([i for i in filter(add_three, li)])
+print([i for i in filter(add_three, li)]) #[2, 4, 6, 8]
+print([i for i in filter(lambda j : j > 5, li)]) #[6, 7, 8]
 
 print("9. Reverse list")
 
@@ -285,16 +288,24 @@ def add_chars(str1):
 add_chars(name)
 print(name)  # =>5
 
-print("28. Arrays")
+print("28. Cast in to str")
+str(5)
+
+print("29. O(n) iterator")
+li = [11,22,15,47,563,0] # 	O(n)
+if 11 in li:
+    print("yes")
+
+print("30. Arrays")
 import array as arr
-a = arr.array('i', [1, 2, 3])
-print(a)
-for i in a:
-    print(i, end=" ")
+numbers= arr.array('i', [10, 20, 30]) # сюда можно класть только указанный тип: в данном случае - i - int
+print(numbers)
 
+print("31. Kwargs")
+def func_name(a,b,c=True,**d):
+    print(a)
+    print(b)
+    print(c)
+    print(d)
 
-d = {"A": 1, "B":2}
-
-print(list(d))
-print(d.keys())
-print(list(d.keys()))
+func_name(1,1, c=False, k=100, n="f")

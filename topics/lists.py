@@ -1,3 +1,8 @@
+#arrays:
+import array as arr
+numbers= arr.array('i', [10, 20, 30]) # сюда можно класть только указанный тип: в данном случае - i - int
+print(numbers)
+
 li = [i + 1 for i in range(2, 8, 3) if i > 0]
 print(li) # [3, 6]
 
@@ -82,4 +87,4 @@ a=["1", "2", "4"]
 # a[0] = 5
 print(str(a))
 
-
+print((i for i in ("6", "2", "3")))

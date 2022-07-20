@@ -2,8 +2,11 @@ try:
     2/0
 except ZeroDivisionError as e:
     print("Exception: " + str(e))
+else:
+    print("else")
 finally:
     print("finally")
+
 
 try:
    raise Exception("Some exception")
