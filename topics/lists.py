@@ -77,6 +77,9 @@ t = tuple(i for i in ("6", "2", "3"))
 t1 = t[:2]
 print(t1[0], t)
 
-print(list(), dict(), set(), tuple())
+print(list(), dict(), set(), tuple()) #[] {} set() ()
+a=["1", "2", "4"]
+# a[0] = 5
+print(str(a))
 
 

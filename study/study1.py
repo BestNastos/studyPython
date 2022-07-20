@@ -269,7 +269,32 @@ else:
     print('NO') # если дошли до break то else не печатается, else принадлежит циклу for а не if-y
 
 
-print(list(map(lambda i, j : i + j, [1,2,3], [5,6,7])))
+print("27. Test pass by link or value")
+name = 5
+def add_chars(str1):
+    print(id(str1))  # => 4353702856
+    print(id(name))  # => 4353702856
+    # новое имя, тот же объект
+    str2 = str1
+    # создаем новое имя (не отличается от предыдущего) и новый объект
+    str1 += 1
+    print(id(str1))  # => 4387143328
+    # объект не изменился
+    print(id(str2))  # => 4353702856
 
-test = 44
+add_chars(name)
+print(name)  # =>5
 
+print("28. Arrays")
+import array as arr
+a = arr.array('i', [1, 2, 3])
+print(a)
+for i in a:
+    print(i, end=" ")
+
+
+d = {"A": 1, "B":2}
+
+print(list(d))
+print(d.keys())
+print(list(d.keys()))

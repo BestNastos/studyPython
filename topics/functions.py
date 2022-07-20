@@ -3,6 +3,7 @@ li = ["my", "name"]
 def multiply(a):
     return a * 2
 print(list(map(multiply, li))) #['mymy', 'namename']
+print(list(map(lambda i, j : i + j, [1,2,3], [5,6,7]))) # [6, 8, 10]
 
 print("2) reduce")
 from functools import reduce
