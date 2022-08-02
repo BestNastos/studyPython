@@ -1,3 +1,5 @@
+from datetime import date
+
 from study.CoffeeShop import CoffeeShop
 
 print("1. String formatting")
@@ -309,3 +311,116 @@ def func_name(a,b,c=True,**d):
     print(d)
 
 func_name(1,1, c=False, k=100, n="f")
+
+print("32. Parametric polymorphism")
+print(int(22).__add__(5)) #  same as 22 + 5
+
+print("33. Duck typing")
+
+class Duck:
+    def fly(self):
+        print("duck is flying")
+
+class Swan:
+    def fly(self):
+        print("swan is flying")
+
+birds = [Duck(), Swan()]
+for bird in birds:
+    bird.fly()
+
+# output:
+# duck is flying
+# swan is flying
+
+print("34. __getitem__")
+
+class CustomContainer:
+    def __init__(self, list):
+        self._list = list
+
+    def __getitem__(self, item):
+        element = self._list[item]
+        return str(element)
+
+my_container = CustomContainer([1,'2', 3, 4, 5])
+print(my_container[2]) # 3
+
+print("35. classmethod")
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    @classmethod
+    def fromBirthYear(cls, name, bYear) :
+        return cls(name, date.today().year - bYear)
+        #same as return Person(name, date.today().year - bYear) in non classmethod
+        #better to use classmethod because this way you don't need an instance to call this method
+
+    def __str__(self):
+        return self.name + " " + str(self.age)
+
+person = Person("Adam", 19)
+print(person)
+person1 = Person.fromBirthYear("Anna", 1985)
+print(person1)
+
+print("35. Problem solving (Hackerrank")
+def func(n):
+    if n % 2 == 1:
+        print("Weird")
+    else:
+        if 2 <=  n <= 5: print("Not Weird")
+        if 6 <=  n <= 20: print("Weird")
+        if n > 20: print("Not Weird")
+
+func(20)
+
+
+# set_len = input("set len - ")
+# print(set_len)
+# values = input("values - ")
+# print(values)
+# com_num = int(input("com_num - "))
+# print(com_num)
+#
+# set_val = {int(i) for i in values.split()}
+#
+# while(com_num > 0):
+#     command = input("command " + str(com_num) + " - ")
+#     if "pop" in command:
+#         set_val.pop()
+#     elif "discard" in command:
+#         val = int(command.split()[1])
+#         set_val.discard(val)
+#     elif "remove" in command:
+#         val = int(command.split()[1])
+#         if val in set_val: set_val.remove(val)
+#     com_num = com_num - 1
+#     print(set_val)
+#
+# summa = 0
+# for i in set_val:
+#     summa = summa + int(i)
+#
+# print(summa)
+
+
+# n = int(input("n - "))
+# s = set(map(int, input("s - ").split()))
+# m = int(input("m - "))
+# for i in range(m):
+#     attr, *kw = input(" command " + str(i) + " - ").split() + [""]
+#     if kw[0]:
+#         getattr(s, attr)(int(kw[0]))
+#     else:
+#         getattr(s, attr)()
+# print(sum(s))
+
+n = int(input("g"))
+s = set(map(int, input("g").split()))
+for i in range(int(input("g"))):
+    eval('s.{0}({1})'.format(*input().split()+['']))
+
+print(sum(s))
